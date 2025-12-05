@@ -6,6 +6,10 @@ import RootLayout from '../component/Layout/RootLayout';
 import Home from '../component/Pages/Home';
 import Login from '../component/Authenticate/Login';
 import Register from '../component/Authenticate/Register';
+import Error from '../component/error/Error';
+import PrivateRouteProvider from '../component/PrivateRoute/PrivateRouteProvider';
+import AllBook from '../component/PrivateRoute/AllBook';
+import AddBook from '../component/PrivateRoute/AddBook';
 
 let router = createBrowserRouter([
   {
@@ -16,18 +20,39 @@ let router = createBrowserRouter([
             index: true,
             Component: Home,
         },
+        
+
+        // private routes
+        {
+            path: '/allbooks',
+            element: <PrivateRouteProvider>
+                     <AllBook></AllBook>
+            </PrivateRouteProvider>
+        },
+        {
+          path: '/addbook',
+          element: <PrivateRouteProvider>
+                <AddBook></AddBook>
+          </PrivateRouteProvider>
+        },
+
+
         // authentication routes
         {
-            path:'logIn',
+            path:'/login',
             Component: Login,
         },
         {
-            path:'register',
+            path:'/register',
             Component: Register
         }
 
     ]
   },
+  {
+    path: '/*',
+    Component: Error,
+  }
 ]);
 
 export default router;

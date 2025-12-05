@@ -1,72 +1,78 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from '../Context/AuthContext';
+import Swal from 'sweetalert2';
 
 const Register = () => {
 
-     // form handler
+    const { createUser , setUser , updateUserProfile} = use(AuthContext)
+
+    // form handler
     const handelRegister = (e) => {
         e.preventDefault();
 
         const form = e.target;
         const formData = new FormData(form);
-        const {email , password, ...NewUserData} = Object.fromEntries(formData.entries());
+        const { email, password, ...otherData } = Object.fromEntries(formData.entries());
+        const NewUserData = {...otherData , email}
         const name = formData.get('name');
         const photo = formData.get('photo');
         console.log(NewUserData);
-        console.log(name, email ,photo , password);
+        console.log(name, email, photo, password);
 
-        // create new user in firebase
+        // create user
 
-        // createUser(email, password)
-        //     .then((userCredential) => {
-        //         const user = userCredential.user;
-        //         updateUserProfile({displayName: name , photoURL: photo})
-        //         .then(()=> {
-        //             setUser({...user , displayName: name , photoURL: photo})
+        createUser(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                updateUserProfile({displayName:name , photoURL: photo})
+                .then(()=> {
+                    setUser({...user , displayName:name ,photoURL:photo})
 
+                    // save user to MongoDB
+                    // save user info to the db
+                fetch('http://localhost:3000/users',{
+                    method: 'POST',
+                    headers:{
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(NewUserData)
+                })
+                .then((res)=> res.json())
+                .then(data=>{
+                    console.log('after added to the mongodb', data);
+                })
 
-        //         // save user info to the db
-        //         fetch('https://roommate-web-a10-server.vercel.app/users',{
-        //             method: 'POST',
-        //             headers:{
-        //                 'content-type': 'application/json'
-        //             },
-        //             body: JSON.stringify(NewUserData) 
-        //         })
-        //         .then((res)=> res.json())
-        //         .then(data=>{
-        //             console.log('after added to the mongodb', data);
-        //         })
+                })
+                .catch((error)=>{
+                    console.log(error.message)
+                    setUser(user);
+                })
 
+                console.log(user);
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch((error) => {
+                console.log(error.message);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: `Error: ${error.message}`,
+                    
+                });
+            })
 
-        //     })
-        //         .catch((error)=>{
-        //             console.log(error);
-        //             setUser(user);
-        //         })
-        //         Swal.fire({
-        //             position: "center",
-        //             icon: "success",
-        //             title: 'your Account has been created Successfully',
-        //             showConfirmButton: false,
-        //             timer: 3500
-        //         });
-        //     })
-        //     .catch((error) => {
-        //         const errorMessage = error.message;
-        //         console.log(errorMessage)
-        //         Swal.fire({
-        //             icon: "error",
-        //             title: "Oops...",
-        //             text: errorMessage,
-        //             timer: 4000
-        //         });
-        //     })
     }
 
 
     return (
-         <div
+        <div
             className="hero min-h-screen bg-linear-to-t from-[#3338A0] to-zinc-300"
             style={{
                 backgroundImage:
@@ -117,14 +123,14 @@ const Register = () => {
                                     name='password'
                                     className="input w-full" placeholder="Password" />
                                 <div><a className="link link-hover">Forgot password?</a></div>
-                                <button type='submit' className="btn btn-primary mt-4">SignUp</button>
+                                <button type='submit' className="btn btn-primary mt-4">Register</button>
 
                                 {/* Google */}
                                 <button className="btn bg-white text-black border-[#e5e5e5]">
                                     <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g><path d="m0 0H512V512H0" fill="#fff"></path><path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path><path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path><path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path><path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path></g></svg>
                                     Sign Up with Google
                                 </button>
-                                <p>Already have an account? Click here to <span className='text-blue-800 text-[14px]'> <Link to={'/signin'}>Sign in.</Link></span> </p>
+                                <p>Already have an account? Click here to <span className='text-blue-800 text-[14px]'> <Link to={'/login'}>Login.</Link></span> </p>
 
                             </form>
                         </div>

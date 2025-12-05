@@ -1,7 +1,35 @@
-import React from 'react';
-import { NavLink } from 'react-router';
+import React, { use } from 'react';
+import { Link, NavLink } from 'react-router';
+import '../Shared/Navbar.css';
+import { AuthContext } from '../Context/AuthContext';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
+
+    const { user, signOutUser } = use(AuthContext)
+
+    const handleSignOut = () => {
+
+        signOutUser()
+            .then(() => {
+                Swal.fire({
+                    title: "You are signed out",
+                    icon: "success",
+                    draggable: true,
+                    timer: 2000
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    timer: 1500
+                });
+            })
+    }
+
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start">
@@ -13,22 +41,46 @@ const Navbar = () => {
                         tabIndex="-1"
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         <li><NavLink className='text-[17px]' to={'/'}>Home</NavLink></li>
-                        <li><a>Item 3</a></li>
+                        <li><NavLink className='text-[17px]' to={'/allbooks'}>All Books</NavLink></li>
+                        <li><NavLink className='text-[17px]' to={'/addbook'}>Add Book</NavLink></li>
+                        <li><NavLink className='text-[17px]' to={'/borrowedbook'}>Borrowed Book</NavLink></li>
                     </ul>
                 </div>
 
                 {/* logo */}
-                <a className="btn btn-ghost text-sky-400 font-bold text-[16px] md:text-[24px]">BooK Archive</a>
+
+                <Link to={'/'} className="btn btn-ghost text-sky-400 font-bold text-[16px] md:text-[24px]">BooK Archive</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <li><NavLink className='text-[17px]' to={'/'}>Home</NavLink></li>
-                    <li><a>Item 3</a></li>
+                    <li><NavLink className='text-[17px]' to={'/allbooks'}>All Books</NavLink></li>
+                    <li><NavLink className='text-[17px]' to={'/addbook'}>Add Book</NavLink></li>
+                    <li><NavLink className='text-[17px]' to={'/borrowedbook'}>Borrowed Book</NavLink></li>
+
                 </ul>
             </div>
             <div className="navbar-end gap-3">
-                <NavLink className='btn btn-outline btn-info' to={'/logIn'}>Log IN</NavLink>
-                <NavLink className='btn btn-outline btn-info' to={'/register'}>Register</NavLink>
+
+                {
+                    user ? <>
+                        <div className="tooltip tooltip-bottom tooltip-primary" data-tip={`${user.displayName}`}>
+                            <button className="avatar">
+                                <div className="ring-primary ring-offset-base-100 w-9 mr-4 rounded-full ring-2 ring-offset-2">
+                                    <img src={user.photoURL} />
+                                </div>
+                            </button>
+                        </div>
+
+                        <a onClick={handleSignOut} className="btn btn-outline btn-info">Sign Out</a>
+                    </>
+                        : <>
+                            <Link to={'/login'} className="btn btn-outline btn-info mr-2">Login</Link>
+
+                            <Link to={'/register'} className="btn btn-outline btn-info mr-1.5">Register</Link>
+                        </>
+                }
+
             </div>
         </div>
     );
