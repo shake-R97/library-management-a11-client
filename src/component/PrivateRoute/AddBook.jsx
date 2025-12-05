@@ -84,12 +84,12 @@ const AddBook = () => {
                                         <legend className="fieldset-legend text-white text-[18px]">Category</legend>
                                         <select name='category' defaultValue="Select Category" className="select w-full">
                                             <option disabled={true}>Pick Book Category</option>
-                                            <option>Novel.</option>
-                                            <option>Thriller.</option>
-                                            <option>History</option>
-                                            <option>Drama</option>
-                                            <option>Kids Tales</option>
-                                            <option>Sci-Fi</option>
+                                            <option>novel</option>
+                                            <option>thriller</option>
+                                            <option>history</option>
+                                            <option>drama</option>
+                                            <option>kids-tales</option>
+                                            <option>sci-fi</option>
                                         </select>
                                     </fieldset>
                                     <fieldset className="fieldset w-full">

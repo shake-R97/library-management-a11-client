@@ -10,6 +10,7 @@ import Error from '../component/error/Error';
 import PrivateRouteProvider from '../component/PrivateRoute/PrivateRouteProvider';
 import AllBook from '../component/PrivateRoute/AllBook';
 import AddBook from '../component/PrivateRoute/AddBook';
+import CategorizedBook from '../component/PrivateRoute/CategorizedBook';
 
 let router = createBrowserRouter([
   {
@@ -20,7 +21,7 @@ let router = createBrowserRouter([
             index: true,
             Component: Home,
         },
-        
+
 
         // private routes
         {
@@ -33,6 +34,12 @@ let router = createBrowserRouter([
           path: '/addbook',
           element: <PrivateRouteProvider>
                 <AddBook></AddBook>
+          </PrivateRouteProvider>
+        },
+        {
+          path:'/book/:category',
+          element: <PrivateRouteProvider>
+                <CategorizedBook></CategorizedBook>
           </PrivateRouteProvider>
         },
 
