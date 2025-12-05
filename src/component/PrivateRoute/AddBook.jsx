@@ -78,7 +78,7 @@ const AddBook = () => {
                                     </fieldset>
                                     <fieldset className="fieldset w-full">
                                         <legend className="fieldset-legend  text-white text-[18px]">Author</legend>
-                                        <input name='author' type="number" className="input w-full" placeholder="Author Name" />
+                                        <input name='author' type="text" className="input w-full" placeholder="Author Name" />
                                     </fieldset>
                                     <fieldset className="fieldset w-full">
                                         <legend className="fieldset-legend text-white text-[18px]">Category</legend>
@@ -88,6 +88,7 @@ const AddBook = () => {
                                             <option>Thriller.</option>
                                             <option>History</option>
                                             <option>Drama</option>
+                                            <option>Kids Tales</option>
                                             <option>Sci-Fi</option>
                                         </select>
                                     </fieldset>
