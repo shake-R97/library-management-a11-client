@@ -12,6 +12,7 @@ import AllBook from '../component/PrivateRoute/AllBook';
 import AddBook from '../component/PrivateRoute/AddBook';
 import CategorizedBook from '../component/PrivateRoute/CategorizedBook';
 import BookDetail from '../component/PrivateRoute/BookDetail';
+import BorrowedBook from '../component/PrivateRoute/BorrowedBook';
 
 let router = createBrowserRouter([
   {
@@ -26,7 +27,8 @@ let router = createBrowserRouter([
 
         // private routes
         {
-            path: '/allbooks',
+            path: '/all-books',
+            loader: ()=> fetch('http://localhost:3000/all-books'),
             element: <PrivateRouteProvider>
                      <AllBook></AllBook>
             </PrivateRouteProvider>
@@ -48,6 +50,13 @@ let router = createBrowserRouter([
           loader: ({params}) => fetch(`http://localhost:3000/book-detail/${params.id}`),
           element:<PrivateRouteProvider>
             <BookDetail></BookDetail>
+          </PrivateRouteProvider>
+        },
+        {
+          path:'/borrowed/:email',
+          loader: ({params}) => fetch(`http://localhost:3000/borrowed/${params.email}`),
+          element: <PrivateRouteProvider>
+              <BorrowedBook></BorrowedBook>
           </PrivateRouteProvider>
         },
 

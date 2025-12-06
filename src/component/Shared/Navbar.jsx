@@ -42,9 +42,9 @@ const Navbar = () => {
                         tabIndex="-1"
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         <li><NavLink className='text-[17px]' to={'/'}>Home</NavLink></li>
-                        <li><NavLink className='text-[17px]' to={'/allbooks'}>All Books</NavLink></li>
+                        <li><NavLink className='text-[17px]' to={'/all-books'}>All Books</NavLink></li>
                         <li><NavLink className='text-[17px]' to={'/addbook'}>Add Book</NavLink></li>
-                        <li><NavLink className='text-[17px]' to={'/borrowedbook'}>Borrowed Book</NavLink></li>
+                        <li><NavLink className='text-[17px]' to={`/borrowed/${user.email}`}>Borrowed Book</NavLink></li>
                     </ul>
                 </div>
 
@@ -55,9 +55,9 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <li><NavLink className='text-[17px]' to={'/'}>Home</NavLink></li>
-                    <li><NavLink className='text-[17px]' to={'/allbooks'}>All Books</NavLink></li>
+                    <li><NavLink className='text-[17px]' to={'/all-books'}>All Books</NavLink></li>
                     <li><NavLink className='text-[17px]' to={'/addbook'}>Add Book</NavLink></li>
-                    <li><NavLink className='text-[17px]' to={'/borrowedbook'}>Borrowed Book</NavLink></li>
+                    <li><NavLink className='text-[17px]' to={`/borrowed/${user.email}`}>Borrowed Book</NavLink></li>
 
                 </ul>
             </div>

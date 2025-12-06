@@ -9,6 +9,7 @@ const AddBook = () => {
         const form = e.target;
         const formData = new FormData(form);
         const newAddedBookData = Object.fromEntries(formData.entries());
+         newAddedBookData.quantity = Number(newAddedBookData.quantity)
         console.log(newAddedBookData)
 
         //send new roommates data to the db
