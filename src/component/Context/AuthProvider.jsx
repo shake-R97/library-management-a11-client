@@ -58,24 +58,27 @@ const AuthProvider = ({children}) => {
 
 
     const userData = {
-        createUser,
-        user,
-        setUser,
-        updateUserProfile,
-        signOutUser,
-        signInUser,
-        loader
+    createUser,
+    user,
+    setUser,
+    updateUserProfile,
+    signOutUser,
+    signInUser,
+    loader,
+    setLoader
+  };
 
-    };
 
-    if(loader){
-        return <Loader></Loader>;
-    }
+  if(loader){
+    return <Loader></Loader>;
+}
+
+
 
     return (
-       <AuthContext value={userData}>
+       <AuthContext.Provider value={userData}>
           {children}
-       </AuthContext>
+       </AuthContext.Provider>
     );
 };
 

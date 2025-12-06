@@ -11,6 +11,7 @@ import PrivateRouteProvider from '../component/PrivateRoute/PrivateRouteProvider
 import AllBook from '../component/PrivateRoute/AllBook';
 import AddBook from '../component/PrivateRoute/AddBook';
 import CategorizedBook from '../component/PrivateRoute/CategorizedBook';
+import BookDetail from '../component/PrivateRoute/BookDetail';
 
 let router = createBrowserRouter([
   {
@@ -40,6 +41,13 @@ let router = createBrowserRouter([
           path:'/book/:category',
           element: <PrivateRouteProvider>
                 <CategorizedBook></CategorizedBook>
+          </PrivateRouteProvider>
+        },
+        {
+          path:'/book-detail/:id',
+          loader: ({params}) => fetch(`http://localhost:3000/book-detail/${params.id}`),
+          element:<PrivateRouteProvider>
+            <BookDetail></BookDetail>
           </PrivateRouteProvider>
         },
 
