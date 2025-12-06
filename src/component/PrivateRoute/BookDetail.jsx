@@ -66,7 +66,7 @@ const BookDetail = () => {
 
                             <p className='text-[14px] md:text-[17px] lg:text-[20px]'>Book Content : {bookContent}</p>
                             <div>
-                                <button onClick={() => setOpen(true)} className='btn btn-outline btn-info'>Borrow Book</button>
+                                <button onClick={() => setOpen(true)} disabled={quantity === 0} className='btn btn-outline btn-info'>{quantity === 0 ? 'Not Available' : 'Borrow Book'}</button>
                             </div>
                         </div>
                     </div>
