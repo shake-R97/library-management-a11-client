@@ -1,16 +1,145 @@
-# React + Vite
+# 📚 Book Archive Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack MERN project featuring authentication, protected routes, book management, and dynamic UI with animations.
 
-Currently, two official plugins are available:
+🚀 Features Overview
+🔹 Layout & Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Navbar (visible on all pages except 404)
 
-## React Compiler
+Logo / Website Name
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Home
 
-## Expanding the ESLint configuration
+All Books (Private Route)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Add Book (Private Route)
+
+Borrowed Books (Private Route)
+
+Login / Register (Shown only when user is logged out)
+
+If logged in:
+
+Shows user photo
+
+Hover: Shows displayName
+
+Logout button
+
+Main Section
+
+Displays content based on defined React routes.
+
+Footer
+
+Includes site info and a clean, attractive design.
+
+🏠 Home Page Features
+1️⃣ Banner / Slider
+
+A carousel with at least 3 slides
+
+Each slide includes meaningful text or visuals
+
+2️⃣ Book Categories Section
+
+Displays 4 category cards
+
+Clicking a category → Shows books from that category
+
+Each book card includes:
+
+Image
+
+Name
+
+Author
+
+Category
+
+Quantity
+
+Rating ⭐ (using react-rating-stars-component or similar)
+
+Details button
+
+🔘 Borrow System
+
+Contains a Borrow button
+
+Borrow button:
+
+Opens a modal with form
+
+User name & email auto-filled from logged-in user
+
+Return date required
+
+Submitting:
+
+Decreases book quantity by 1 using MongoDB $inc
+
+Adds the book to Borrowed Books list
+
+Cannot go below 0
+
+When quantity reaches 0, Borrow button becomes disabled
+
+🔐 Authentication System
+🔑 Login Page
+
+Email
+
+Password
+
+Social Login (Google or GitHub — one required)
+
+Link to Register page
+
+📝 Register Page
+
+Contains:
+
+Name
+
+Email
+
+Photo URL
+
+Password
+
+Creates user and updates profile
+
+Redirects properly after registration
+
+🔒 Protected Routes
+
+Pages only accessible when user is logged in:
+
+All Books
+
+Add Book
+
+Borrowed Books
+
+Details Page
+
+If the user is not logged in → redirects to Login Page automatically.
+
+
+⚙️ Technologies Used
+
+React + Vite
+
+Firebase Authentication
+
+Express.js
+
+MongoDB
+
+React Router
+
+Framer Motion
+
+TailwindCSS / DaisyUI
