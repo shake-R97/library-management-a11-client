@@ -42,10 +42,10 @@ const AddBook = () => {
 
     return (
         <div
-            className="hero min-h-screen bg-linear-to-t from-[#3338A0] to-zinc-300"
+            className="hero min-h-screen bg-linear-to-t from-[#3fc9ff] to-zinc-300"
             style={{
                 backgroundImage:
-                    "linear-gradient(to top, rgba(51,56,160,0.2)),url('/sliderImg/sl_021821_40880_04.jpg')",
+                    "linear-gradient(to top, rgba(51,56,160,0.2)),url('/Book-img/Gradient.jpeg')",
             }}
         >
             {/* <div className="hero-overlay"></div> */}
@@ -107,7 +107,7 @@ const AddBook = () => {
                                     </fieldset>
                                 </div>
                                 <div className='mt-3 px-2 md:px-4 lg:px-8 md:mt-3'>
-                                    <input className='w-full btn bg-[#8CE4FF] text-white' type="submit" value="Add Book" />
+                                    <input className='w-full btn bg-[#0400e2] text-white' type="submit" value="Add Book" />
                                 </div>
 
                             </form>

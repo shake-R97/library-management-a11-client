@@ -44,7 +44,7 @@ const Navbar = () => {
                         <li><NavLink className='text-[17px]' to={'/'}>Home</NavLink></li>
                         <li><NavLink className='text-[17px]' to={'/all-books'}>All Books</NavLink></li>
                         <li><NavLink className='text-[17px]' to={'/addbook'}>Add Book</NavLink></li>
-                        <li><NavLink className='text-[17px]' to={`/borrowed/${user.email}`}>Borrowed Book</NavLink></li>
+                        <li><NavLink className='text-[17px]' to={`/borrowed/${user?.email}`}>Borrowed Book</NavLink></li>
                     </ul>
                 </div>
 
@@ -57,7 +57,7 @@ const Navbar = () => {
                     <li><NavLink className='text-[17px]' to={'/'}>Home</NavLink></li>
                     <li><NavLink className='text-[17px]' to={'/all-books'}>All Books</NavLink></li>
                     <li><NavLink className='text-[17px]' to={'/addbook'}>Add Book</NavLink></li>
-                    <li><NavLink className='text-[17px]' to={`/borrowed/${user.email}`}>Borrowed Book</NavLink></li>
+                    <li><NavLink className='text-[17px]' to={`/borrowed/${user?.email}`}>Borrowed Book</NavLink></li>
 
                 </ul>
             </div>

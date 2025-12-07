@@ -6,7 +6,7 @@ const AllBook = () => {
     const allBooks = useLoaderData();
 
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto mb-12">
             <table className="table">
                 {/* head */}
                 <thead>

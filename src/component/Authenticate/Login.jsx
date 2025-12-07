@@ -73,7 +73,7 @@ const Login = () => {
                     <div className='h-full flex flex-col justify-center items-center text-center'>
                         <h1 className="md:text-4xl lg:text-7xl text-white font-bold">Welcome Back!.</h1>
                         <p className="py-6 lg:text-[19px] md:text-[13px] text-white">
-                            Sign in now and get ready to find new acquaintances!
+                            Sign in now and get your favorite books!
                         </p>
                     </div>
                 </div>
@@ -95,14 +95,14 @@ const Login = () => {
                                     name='password'
                                     className="input w-full" placeholder="Password" />
                                 <div><a className="link link-hover">Forgot password?</a></div>
-                                <button type='submit' className="btn btn-primary mt-4">Login</button>
+                                <button type='submit' className="btn btn-info mt-4">Login</button>
 
                                 {/* Google */}
                                 <button type='button' onClick={''} className="btn bg-white text-black mt-1.5 border-[#e5e5e5]">
                                     <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g><path d="m0 0H512V512H0" fill="#fff"></path><path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path><path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path><path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path><path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path></g></svg>
                                     Sign In with Google
                                 </button>
-                                <p>Don't have an account? Click here to <span className='text-blue-800 text-[14px]'> <Link to={'/register'}>Register.</Link></span> </p>
+                                <p>Don't have an account? Click here to <span className='text-sky-400 text-[14px]'> <Link to={'/register'}>Register.</Link></span> </p>
 
                             </form>
                         </div>
