@@ -31,7 +31,7 @@ const Register = () => {
 
                     // save user to MongoDB
                     // save user info to the db
-                fetch('http://localhost:3000/users',{
+                fetch('https://library-management-a11-server.vercel.app/users',{
                     method: 'POST',
                     headers:{
                         'content-type': 'application/json'

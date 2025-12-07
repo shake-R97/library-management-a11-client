@@ -21,7 +21,7 @@ const BookDetail = () => {
             returnDate,
         }
 
-        fetch(`http://localhost:3000/borrow/${_id}`, {
+        fetch(`https://library-management-a11-server.vercel.app/borrow/${_id}`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"

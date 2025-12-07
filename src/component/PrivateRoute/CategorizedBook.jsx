@@ -16,7 +16,7 @@ const CategorizedBook = () => {
             setLoading(true);
 
             try {
-                const res = await fetch(`http://localhost:3000/book-category/${category}`);
+                const res = await fetch(`https://library-management-a11-server.vercel.app/book-category/${category}`);
                 const data = await res.json();
                 setBooks(data);
             } catch (error) {

@@ -28,7 +28,7 @@ let router = createBrowserRouter([
         // private routes
         {
             path: '/all-books',
-            loader: ()=> fetch('http://localhost:3000/all-books'),
+            loader: ()=> fetch('https://library-management-a11-server.vercel.app/all-books'),
             element: <PrivateRouteProvider>
                      <AllBook></AllBook>
             </PrivateRouteProvider>
@@ -47,14 +47,14 @@ let router = createBrowserRouter([
         },
         {
           path:'/book-detail/:id',
-          loader: ({params}) => fetch(`http://localhost:3000/book-detail/${params.id}`),
+          loader: ({params}) => fetch(`https://library-management-a11-server.vercel.app/book-detail/${params.id}`),
           element:<PrivateRouteProvider>
             <BookDetail></BookDetail>
           </PrivateRouteProvider>
         },
         {
           path:'/borrowed/:email',
-          loader: ({params}) => fetch(`http://localhost:3000/borrowed/${params.email}`),
+          loader: ({params}) => fetch(`https://library-management-a11-server.vercel.app/borrowed/${params.email}`),
           element: <PrivateRouteProvider>
               <BorrowedBook></BorrowedBook>
           </PrivateRouteProvider>

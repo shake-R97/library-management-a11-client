@@ -14,7 +14,7 @@ const AddBook = () => {
 
         //send new roommates data to the db
 
-        fetch('http://localhost:3000/addbook', {
+        fetch('https://library-management-a11-server.vercel.app/addbook', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
